@@ -53,8 +53,7 @@ function getCircleCircumference(radius) {
  */
 function getAverage(value1, value2) {
   /* throw new Error('Not implemented'); */
-
-  return (value1 + value2) / 2;
+  return value1 / 2 + value2 / 2;
 }
 
 /**
@@ -132,8 +131,7 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  */
 function getLastDigit(value) {
   /* throw new Error('Not implemented'); */
-  const splittedNumber = value.toString().split('');
-  return +splittedNumber[splittedNumber.length - 1];
+  return value % 10;
 }
 
 /**
@@ -210,16 +208,16 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
+function isPrime(n) {
   /* throw new Error('Not implemented'); */
-  /* let result = true;
-  for (let i = n - 1; i > 1; i - 1) {
+  let result = true;
+  for (let i = n - 1; i > 1; i -= 1) {
     if (n % i === 0) {
       result = false;
       return result;
     }
   }
-  return result; */
+  return result;
 }
 
 /**
@@ -273,36 +271,30 @@ function getCube(num) {
  */
 /* 0 1 2 3 4 5 6 7  8  9  10 */
 /* 0 1 1 2 3 5 8 13 21 34 55 */
-function getFibonacciNumber(/* index */) {
-  /* throw new Error('Not implemented'); */
-  /* let result = 0; let savedNumber = 1;
-  for(let i = 1; i <= index; i++){
-    result += savedNumber;
-    savedNumber = result;
-  } */
-  /* switch (index) {
+function getFibonacciNumber(index) {
+  let res;
+
+  switch (index) {
     case 0: {
-      return 0;
+      res = 0;
+      break;
     }
     case 1: {
-      return 1;
-    }
-    case 2: {
-      return 1;
+      res = 1;
+      break;
     }
     default: {
-      let firstNum = 1;
-      let secondNum = 1;
-      let result = 0;
-      for (let i = 3; i <= index; i + 1) {
-        result = firstNum + secondNum;
-        firstNum = secondNum;
-        secondNum = result;
+      let savedNumber1 = 0;
+      let savedNumber2 = 1;
+      for (let i = 2; i <= index; i += 1) {
+        res = savedNumber1 + savedNumber2;
+        savedNumber1 = savedNumber2;
+        savedNumber2 = res;
       }
-
-      return result;
+      break;
     }
-  } */
+  }
+  return res;
 }
 
 /**
@@ -316,14 +308,13 @@ function getFibonacciNumber(/* index */) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
-  throw new Error('Not implemented');
-  /* let sum = 0;
-  for (let i = 0; i <= n; i + 1) {
+function getSumToN(n) {
+  /* throw new Error('Not implemented'); */
+  let sum = 0;
+  for (let i = 0; i <= n; i += 1) {
     sum += i;
   }
-
-  return sum; */
+  return sum;
 }
 
 /**
@@ -363,10 +354,13 @@ function getSumOfDigits(num) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(num) {
-  /* throw new Error('Not implemented'); */
+function isPowerOfTwo(/* num */) {
+  throw new Error('Not implemented');
+  /* let res;
 
-  return num % 2 === 0;
+  for (let i = 0; i < num; i += 1) {
+
+  } */
 }
 
 /**
@@ -444,19 +438,9 @@ function toFixed(number, fractionDigits) {
  * 12345, 7    => '12345.00'
  * 12.345, 4   => '12.35'
  */
-function toPrecision(/* number, precision */) {
-  throw new Error('Not implemented');
-  /* let fractionDigits = 0;
-  let cleanedNumbers = number.toString().split('.').join('');
-  if(number.toString().split('.').length === 2){
-    fractionDigits = number.toString().length - 1 - precision;
-  } else {
-    fractionDigits = number.toString().length - precision;
-  }
-
-  if(fractionDigits)
-
-   */
+function toPrecision(number, precision) {
+  /* throw new Error('Not implemented'); */
+  return number.toPrecision(precision);
 }
 
 /**
@@ -472,7 +456,7 @@ function toPrecision(/* number, precision */) {
 function getNumberValue(number) {
   /* throw new Error('Not implemented'); */
 
-  return +number;
+  return number.valueOf();
 }
 
 /**
@@ -492,7 +476,7 @@ function getNumberValue(number) {
  */
 function isNumber(number) {
   /* throw new Error('Not implemented'); */
-  return typeof number === 'number';
+  return Number.isFinite(number);
 }
 
 /**
@@ -524,7 +508,7 @@ function isInteger(number) {
  */
 function getFloatOnString(str) {
   /* throw new Error('Not implemented'); */
-  return parseFloat(str);
+  return Number.parseFloat(str);
 }
 
 /**
@@ -543,7 +527,7 @@ function getFloatOnString(str) {
  */
 function getIntegerOnString(str, base) {
   /* throw new Error('Not implemented'); */
-  return +Math.floor(parseFloat(str)).toString(base);
+  return Math.floor(Number.parseInt(str, base));
 }
 
 /**
@@ -621,7 +605,7 @@ function roundToNearestInteger(number) {
  */
 function getIntegerPartNumber(number) {
   /* throw new Error('Not implemented'); */
-  return +number.toString().split('.')[0];
+  return Math.trunc(number);
 }
 
 /**
@@ -638,7 +622,7 @@ function getIntegerPartNumber(number) {
  */
 function getSumOfNumbers(x1, x2, x3) {
   /* throw new Error('Not implemented'); */
-  return x1 + x2 + x3;
+  return +(x1 + x2 + x3).toFixed(1);
 }
 
 /**
@@ -672,7 +656,7 @@ function getMaxNumber(firstNumber, secondNumber) {
  */
 function getRandomInteger(min, max) {
   /* throw new Error('Not implemented'); */
-  return Math.random() * (max - min) + min;
+  return Math.trunc(Math.random() * (max - min) + min);
 }
 
 /**
@@ -687,7 +671,7 @@ function getRandomInteger(min, max) {
  */
 function getHypotenuse(a, b) {
   /* throw new Error('Not implemented'); */
-  return Math.sqrt(a ** 2 + b ** 2);
+  return Math.hypot(a, b);
 }
 
 /**
@@ -706,9 +690,9 @@ function getHypotenuse(a, b) {
 function getCountOfOddNumbers(number) {
   /* throw new Error('Not implemented'); */
   if (number % 2 === 0) {
-    return number / 2;
+    return Math.abs(number) / 2;
   }
-  return Math.ceil(number / 2);
+  return Math.ceil(Math.abs(number) / 2);
 }
 
 module.exports = {
