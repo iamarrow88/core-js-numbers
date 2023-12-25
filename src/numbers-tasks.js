@@ -211,16 +211,16 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(n) {
+function isPrime(/* n */) {
   /* throw new Error('Not implemented'); */
-  let result = true;
+  /* let result = true;
   for (let i = n - 1; i > 1; i - 1) {
     if (n % i === 0) {
       result = false;
       return result;
     }
   }
-  return result;
+  return result; */
 }
 
 /**
@@ -274,15 +274,14 @@ function getCube(num) {
  */
 /* 0 1 2 3 4 5 6 7  8  9  10 */
 /* 0 1 1 2 3 5 8 13 21 34 55 */
-function getFibonacciNumber(index) {
+function getFibonacciNumber(/* index */) {
   /* throw new Error('Not implemented'); */
   /* let result = 0; let savedNumber = 1;
   for(let i = 1; i <= index; i++){
     result += savedNumber;
     savedNumber = result;
   } */
-
-  switch (index) {
+  /* switch (index) {
     case 0: {
       return 0;
     }
@@ -304,7 +303,7 @@ function getFibonacciNumber(index) {
 
       return result;
     }
-  }
+  } */
 }
 
 /**
@@ -318,14 +317,14 @@ function getFibonacciNumber(index) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(n) {
-  /* throw new Error('Not implemented'); */
-  let sum = 0;
+function getSumToN(/* n */) {
+  throw new Error('Not implemented');
+  /* let sum = 0;
   for (let i = 0; i <= n; i + 1) {
     sum += i;
   }
 
-  return sum;
+  return sum; */
 }
 
 /**
